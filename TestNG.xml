@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+
+    <test name="TestCases">
+        <classes>
+            <class name="org.armbrust.ButtonsTest"/>
+            <class name="org.armbrust.SelectMenuMultipleTest"/>
+            <class name="org.armbrust.SelectMenuSingleTest"/>
+            <class name="org.armbrust.SupportLocatorTests"/>
+        </classes>
+    </test>
+</suite>
