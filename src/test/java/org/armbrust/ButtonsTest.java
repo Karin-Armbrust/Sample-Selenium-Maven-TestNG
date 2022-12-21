@@ -19,7 +19,7 @@ import static org.testng.Assert.assertFalse;
 // This is different than JUnit. Weird, I know...
 public class ButtonsTest {
     // Initialize the Webdriver
-    WebDriver driver = new FirefoxDriver();
+    final WebDriver driver = new FirefoxDriver();
 
 
     // Set up each test
@@ -44,7 +44,7 @@ public class ButtonsTest {
 
     // Sychronizing test - each button activates the next one
     @Test(priority = 4)
-    public void ButtonSynchonizingTest() throws InterruptedException {
+    public void ButtonSynchonizingTest() {
         // Click Button One
         ButtonComponent buttonOne = new ButtonComponent(driver, By.id("buttonOne"));
         buttonOne.waitTilReady();
@@ -89,7 +89,7 @@ public class ButtonsTest {
     }
     // Double Click Test
     @Test(priority = 1)
-    public void ButtonDoubleClickTest() throws InterruptedException {
+    public void ButtonDoubleClickTest() {
 
         // Wait until the element is present and ready
         ButtonComponent doubleClickMeButton = new ButtonComponent(driver,By.id("buttonDoubleClick"));
@@ -112,7 +112,7 @@ public class ButtonsTest {
 
     // Right Click Test
     @Test(priority = 2)
-    public void ButtonRightClickTest() throws InterruptedException {
+    public void ButtonRightClickTest() {
         // Wait until the element is present and ready
         ButtonComponent rightClickMeButton = new ButtonComponent(driver,By.id("buttonRightClick"));
         rightClickMeButton.elementNowReady();
@@ -133,7 +133,7 @@ public class ButtonsTest {
 
     // Simple Click Test
     @Test(priority = 3)
-    public void ButtonClickMeTest() throws InterruptedException {
+    public void ButtonClickMeTest() {
 
         // Wait until the element is present and ready
         ButtonComponent ClickMeButton = new ButtonComponent(driver,By.id("buttonClick"));
@@ -154,7 +154,7 @@ public class ButtonsTest {
 
     // Close the driver after each test
     @AfterTest
-    public void CloseTest() throws InterruptedException {
+    public void CloseTest() {
         driver.quit();
     }
 

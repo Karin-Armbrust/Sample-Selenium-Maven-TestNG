@@ -14,7 +14,7 @@ import java.time.Duration;
 
 public class SelectMenuSingleTest {
     // Initialize the Webdriver
-    WebDriver driver = new FirefoxDriver();
+    final WebDriver driver = new FirefoxDriver();
 
     // Set up before the tests are run Note: This is different than JUnit in that
     // @BeforeTest is run once before all the tests
@@ -38,7 +38,7 @@ public class SelectMenuSingleTest {
 
     // Tests that the Select menu is a Single
     @Test(priority=1)
-    public void SelectMenuIsSingleTest() throws InterruptedException {
+    public void SelectMenuIsSingleTest() {
 
         // Wait until Select Menu is ready
         SelectMenuComponent singleSelectMenu = new SelectMenuComponent(driver, By.id("selectmenu2"));
@@ -50,12 +50,12 @@ public class SelectMenuSingleTest {
         System.out.println("Expected: " + false);
         System.out.println("Actual:   " + singleSelectMenu.isMultipleSelect());
 
-        Assert.assertEquals(false, singleSelectMenu.isMultipleSelect());
+        Assert.assertFalse(singleSelectMenu.isMultipleSelect());
     }
 
     // Check the number of options
     @Test(priority=2)
-    public void SelectMenuSingleOptionNumberTest() throws InterruptedException {
+    public void SelectMenuSingleOptionNumberTest() {
         // Wait until Select Menu is ready
         SelectMenuComponent singleSelectMenu = new SelectMenuComponent(driver, By.id("selectmenu2"));
         singleSelectMenu.elementNowReady();
@@ -74,7 +74,7 @@ public class SelectMenuSingleTest {
 
     // A Test that selects several values but expects only the last one to persist
     @Test(priority=3)
-    public void SelectOneValue() throws InterruptedException {
+    public void SelectOneValue() {
         // Wait until Select Menu is ready
         SelectMenuComponent singleSelectMenu = new SelectMenuComponent(driver, By.id("selectmenu2"));
         singleSelectMenu.elementNowReady();
@@ -100,7 +100,7 @@ public class SelectMenuSingleTest {
 
     // Close the driver after each test
     @AfterTest
-    public void CloseTest() throws InterruptedException {
+    public void CloseTest() {
         driver.quit();
     }
 }

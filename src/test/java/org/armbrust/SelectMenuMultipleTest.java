@@ -16,7 +16,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class SelectMenuMultipleTest {
-    WebDriver driver = new FirefoxDriver();
+    final WebDriver driver = new FirefoxDriver();
 
     // Set up before the tests are run Note: This is different than JUnit in that
     // @BeforeTest is run once before all the tests
@@ -40,7 +40,7 @@ public class SelectMenuMultipleTest {
 
     // Is the Select set to multiple Test
     @Test(priority = 1)
-    public void SelectMenuIsMultipleTest() throws InterruptedException {
+    public void SelectMenuIsMultipleTest() {
 
         // Wait until Select Menu is ready
         SelectMenuComponent multiSelectMenu = new SelectMenuComponent(driver, By.id("selectmenu1"));
@@ -52,12 +52,12 @@ public class SelectMenuMultipleTest {
         System.out.println("Expected: " + true);
         System.out.println("Actual:   " + multiSelectMenu.isMultipleSelect());
 
-        Assert.assertEquals(true, multiSelectMenu.isMultipleSelect());
+        Assert.assertTrue(multiSelectMenu.isMultipleSelect());
     }
 
     // How many options does the Select have Test
     @Test(priority = 2)
-    public void SelectMenuOptionNumberTest() throws InterruptedException {
+    public void SelectMenuOptionNumberTest() {
 
         // Wait until Select Menu is ready
         SelectMenuComponent multiSelectMenu = new SelectMenuComponent(driver, By.id("selectmenu1"));
@@ -76,7 +76,7 @@ public class SelectMenuMultipleTest {
 
     // Select multiple values
     @Test(priority=3)
-    public void SelectMultipleOptions() throws InterruptedException {
+    public void SelectMultipleOptions() {
 
         // Wait until Select Menu is ready
         SelectMenuComponent multiSelectMenu = new SelectMenuComponent(driver, By.id("selectmenu1"));
@@ -104,7 +104,7 @@ public class SelectMenuMultipleTest {
 
     // Select and deselect multiple values
     @Test(priority=4)
-    public void DeselectMultipleOptions() throws InterruptedException {
+    public void DeselectMultipleOptions() {
         // Wait until Select Menu is ready
         SelectMenuComponent multiSelectMenu = new SelectMenuComponent(driver, By.id("selectmenu1"));
         multiSelectMenu.elementNowReady();
@@ -128,7 +128,7 @@ public class SelectMenuMultipleTest {
 
     // Close the driver after each test
     @AfterTest
-    public void CloseTest() throws InterruptedException {
+    public void CloseTest() {
         driver.quit();
     }
 }

@@ -20,7 +20,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class SupportLocatorTests {
-    WebDriver driver = new FirefoxDriver();
+    final WebDriver driver = new FirefoxDriver();
 
     @BeforeTest
     public void setUpTest() throws InterruptedException {
@@ -42,7 +42,7 @@ public class SupportLocatorTests {
 
     // Uses the Support Locator ByIdOrName
     @Test(priority = 1)
-    public void ByIdOrNameTest() throws InterruptedException {
+    public void ByIdOrNameTest() {
 
         // Get the buttons initially
         WebElement button1 = new WebDriverWait(driver, 3)
@@ -85,7 +85,7 @@ public class SupportLocatorTests {
 
     // Uses the Support Locator ByAll
     @Test(priority = 2)
-    public void ByAllTest() throws InterruptedException {
+    public void ByAllTest() {
         final List<WebElement> allListItems = driver.findElements(new ByAll(By.className("list1item1")));
         System.out.println("Support Locator ByAll Test:");
         System.out.println("Expected: 6");
@@ -95,7 +95,7 @@ public class SupportLocatorTests {
 
     // Uses the Support Locator ByChained with 2 levels
     @Test(priority=3)
-    public void ByChainedTestAll() throws InterruptedException {
+    public void ByChainedTestAll() {
         final List<WebElement> allListItemsChained = driver.findElements(new ByChained(By.id("supportLocatorList"),
                 By.className("list1item1")));
         System.out.println("Support Locator ByChained Test:");
@@ -106,7 +106,7 @@ public class SupportLocatorTests {
 
     // Uses the Support Locator ByChained with 3 levels
     @Test(priority=4)
-    public void ByChainedTestAll2() throws InterruptedException {
+    public void ByChainedTestAll2() {
         final List<WebElement> allListItemsChained = driver.findElements(new ByChained(By.id("supportLocatorList"),
                 By.id("firstList"), By.className("list1item1")));
         System.out.println("Support Locator ByChained Test:");
@@ -116,7 +116,7 @@ public class SupportLocatorTests {
     }
 
     @AfterTest
-    public void closeTest() throws InterruptedException {
+    public void closeTest() {
         driver.quit();
     }
 }

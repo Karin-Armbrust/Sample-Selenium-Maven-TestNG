@@ -21,9 +21,7 @@ public class SelectMenuComponent extends WaitTillReady {
     public void elementNowReady() {
         WebElement element = this.driver.findElement(this.locator);
 
-        if (element.isDisplayed() && element.isEnabled()) {
-            return;
-        } else {
+        if (!(element.isDisplayed() && element.isEnabled())) {
             throw new IllegalStateException(String.format("The Select Menu %s is not ready.", this.locator));
         }
     }
@@ -55,8 +53,7 @@ public class SelectMenuComponent extends WaitTillReady {
     public List<WebElement> getMultiSelections() {
         WebElement element = this.driver.findElement(this.locator);
         final Select selections = new Select(element);
-        List<WebElement> selectedOptionList = selections.getAllSelectedOptions();
-        return selectedOptionList;
+        return selections.getAllSelectedOptions();
     }
 
     // Deselect multi option menu

@@ -20,9 +20,7 @@ public class ButtonComponent extends WaitTillReady {
     public void elementNowReady() {
         WebElement element = this.driver.findElement(this.locator);
 
-        if (element.isDisplayed() && element.isEnabled()) {
-            return;
-        } else {
+        if (!(element.isDisplayed() && element.isEnabled())) {
             throw new IllegalStateException(String.format("The Button %s is not ready.", this.locator));
         }
     }
