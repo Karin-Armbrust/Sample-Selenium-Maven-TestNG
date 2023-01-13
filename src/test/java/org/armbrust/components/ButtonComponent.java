@@ -9,7 +9,13 @@ public class ButtonComponent extends WaitTillReady {
     private final By locator;
     private final WebDriver driver;
 
+    /**
+     *
+     * @param driver
+     * @param locator
+     */
     // Constructor
+
     public ButtonComponent(WebDriver driver, final By locator) {
         super(driver, 10);
         this.driver = driver;
@@ -17,6 +23,7 @@ public class ButtonComponent extends WaitTillReady {
     }
 
     // Check that the button is ready and clickable
+
     public void elementNowReady() {
         WebElement element = this.driver.findElement(this.locator);
 

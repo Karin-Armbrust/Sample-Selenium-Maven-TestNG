@@ -11,12 +11,14 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
 
 public class SelectMenuMultipleTest {
     final WebDriver driver = new FirefoxDriver();
+    SoftAssert softAssert = new SoftAssert();
 
     // Set up before the tests are run Note: This is different than JUnit in that
     // @BeforeTest is run once before all the tests
@@ -87,9 +89,9 @@ public class SelectMenuMultipleTest {
 
         List<WebElement> selectedOptionList = multiSelectMenu.getMultiSelections();
 
-        Assert.assertEquals(2, selectedOptionList.size());
-        Assert.assertEquals("Red", selectedOptionList.get(0).getText());
-        Assert.assertEquals("Yellow", selectedOptionList.get(1).getText());
+        softAssert.assertEquals(2, selectedOptionList.size());
+        softAssert.assertEquals("Red", selectedOptionList.get(0).getText());
+        softAssert.assertEquals("Yellow", selectedOptionList.get(1).getText());
 
         WebElement outputMessage = new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("selectMenuOutput")));
@@ -100,6 +102,7 @@ public class SelectMenuMultipleTest {
         System.out.println("Actual:   " + outputMessage.getText());
 
         Assert.assertEquals("You selected some stuff: Red Yellow", outputMessage.getText());
+        softAssert.assertAll();
     }
 
     // Select and deselect multiple values

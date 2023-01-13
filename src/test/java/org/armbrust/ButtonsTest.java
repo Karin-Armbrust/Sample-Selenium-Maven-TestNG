@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
@@ -20,6 +21,7 @@ import static org.testng.Assert.assertFalse;
 public class ButtonsTest {
     // Initialize the Webdriver
     final WebDriver driver = new FirefoxDriver();
+    SoftAssert softAssert = new SoftAssert();
 
 
     // Set up each test
@@ -80,10 +82,11 @@ public class ButtonsTest {
         System.out.println("ButtonFour Enabled Expected: false");
         System.out.println("ButtonFour Enabled Actual: " + buttonFour.isEnabled());
 
-        assertEquals(successMessage.getText(), "");
-        assertFalse(buttonTwo.isEnabled());
-        assertFalse(buttonThree.isEnabled());
-        assertFalse(buttonFour.isEnabled());
+        softAssert.assertEquals(successMessage.getText(), "");
+        softAssert.assertFalse(buttonTwo.isEnabled());
+        softAssert.assertFalse(buttonThree.isEnabled());
+        softAssert.assertFalse(buttonFour.isEnabled());
+        softAssert.assertAll();
 
 
     }

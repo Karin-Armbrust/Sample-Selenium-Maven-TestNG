@@ -15,12 +15,14 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
 
 public class SupportLocatorTests {
     final WebDriver driver = new FirefoxDriver();
+    SoftAssert softAssert = new SoftAssert();
 
     @BeforeTest
     public void setUpTest() throws InterruptedException {
@@ -47,15 +49,15 @@ public class SupportLocatorTests {
         // Get the buttons initially
         WebElement button1 = new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("buttonClick1")));
-        Assert.assertEquals("Button Click 1", button1.getText());
+        softAssert.assertEquals("Button Click 1", button1.getText());
 
         WebElement button2 = new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("buttonClick2")));
-        Assert.assertEquals("Button Click 2", button2.getText());
+        softAssert.assertEquals("Button Click 2", button2.getText());
 
         WebElement button3 = new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("buttonClick3A")));
-        Assert.assertEquals("Button Click 3", button3.getText());
+        softAssert.assertEquals("Button Click 3", button3.getText());
 
         // Get the first button with an Id or Name that is equal to a value
         WebElement buttonIdOrName1 = new WebDriverWait(driver, 3)
@@ -72,7 +74,7 @@ public class SupportLocatorTests {
         System.out.println("Second Test:");
         System.out.println("Expected: " + button2.getText());
         System.out.println("Actual: " + buttonIdOrName2.getText());
-        Assert.assertEquals(button2, buttonIdOrName2);
+        softAssert.assertEquals(button2, buttonIdOrName2);
 
         // Testing to ensure that ByIdOrName will get the name
         WebElement buttonIdOrName3 = new WebDriverWait(driver, 3)
@@ -80,7 +82,8 @@ public class SupportLocatorTests {
         System.out.println("Third Test:");
         System.out.println("Expected: " + button3.getText());
         System.out.println("Actual: " + buttonIdOrName3.getText());
-        Assert.assertEquals(button3, buttonIdOrName3);
+        softAssert.assertEquals(button3, buttonIdOrName3);
+        softAssert.assertAll();
     }
 
     // Uses the Support Locator ByAll
